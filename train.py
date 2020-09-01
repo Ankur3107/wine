@@ -17,8 +17,8 @@ df = pd.read_csv("wine_quality.csv")
 
 # Split into train and test sections
 
-X = df[['fixed.acidity', 'volatile.acidity', 'citric.acid', 'residual.sugar',
-       'chlorides', 'free.sulfur.dioxide', 'total.sulfur.dioxide', 'density',
+X = df[['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+       'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
        'pH', 'sulphates', 'alcohol']].to_numpy()
 y = df['target'].to_numpy()
 
