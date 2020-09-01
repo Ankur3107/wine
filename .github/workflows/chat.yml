@@ -9,13 +9,6 @@ jobs:
     steps:
       - uses: machine-learning-apps/actions-chatops@master
       - name: chat_run
-        with:
-          APP_PEM: ${{ secrets.APP_PEM }}
-          APP_ID: ${{ secrets.APP_ID }}
-          TRIGGER_PHRASE: "/run-full-test"
-          INDICATOR_LABEL: "Full Run Pending"
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
