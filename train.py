@@ -17,10 +17,10 @@ df = pd.read_csv("wine_quality.csv")
 
 # Split into train and test sections
 
-X = data[['fixed.acidity', 'volatile.acidity', 'citric.acid', 'residual.sugar',
+X = df[['fixed.acidity', 'volatile.acidity', 'citric.acid', 'residual.sugar',
        'chlorides', 'free.sulfur.dioxide', 'total.sulfur.dioxide', 'density',
        'pH', 'sulphates', 'alcohol']].to_numpy()
-y = data['target'].to_numpy()
+y = df['target'].to_numpy()
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 3107, test_size=0.2) 
 
