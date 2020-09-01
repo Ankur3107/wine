@@ -7,8 +7,8 @@ jobs:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
     steps:
-      - uses: machine-learning-apps/actions-chatops@master
-      - name: chat_run
+      - uses: actions/checkout@v2
+      - name: cml_run
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -23,4 +23,5 @@ jobs:
           cml-publish feature_importance.png --md >> report.md
           cml-publish residuals.png --md >> report.md
           
-          cml-send-comment report.md      
+          cml-send-comment report.md
+  
