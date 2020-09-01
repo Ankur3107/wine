@@ -8,9 +8,9 @@ jobs:
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: machine-learning-apps/actions-chatops@master
-      - env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: chat_run
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
