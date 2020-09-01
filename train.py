@@ -1,6 +1,7 @@
 import pandas as pd 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -15,15 +16,24 @@ seed = 42
 df = pd.read_csv("wine_quality.csv")
 
 # Split into train and test sections
-y = df.pop("quality")
-X_train, X_test, y_train, y_test = train_test_split(df, y, test_size=0.2, random_state=seed)
+
+X = df[['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+       'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
+       'pH', 'sulphates', 'alcohol']].to_numpy()
+y = df['quality'].to_numpy()
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 3107, test_size=0.2) 
+
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.fit_transform(X_test)
 
 #################################
 ########## MODELLING ############
 #################################
 
 # Fit a model on the train section
-regr = RandomForestRegressor(max_depth=2, random_state=seed)
+regr = RandomForestRegressor(n_estimators=200)
 regr.fit(X_train, y_train)
 
 # Report training set score
